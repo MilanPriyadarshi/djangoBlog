@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Blog
+{% endblock title %}{% block blogactive %}active
+{% endblock blogactive %}active
+{% block body %}
+{% load static %}
+<!-- <div class="container mt-4">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block container-fluid"">
+         <img  src="https://source.unsplash.com/250x200/?nature,water" height=300px width=250px alt="">
+        </div>
+      </div>
+    </div> -->
+    <div class="col-md-8">
+
+        <h1 class="my-4">Page Heading
+          <small>Secondary Text</small>
+        </h1>
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <img class="card-img-top" src="https://source.unsplash.com/750x300/?nature,water" height=750px width=300px alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">Post Title</h2>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+            <a href="#" class="btn btn-primary">Read More →</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on January 1, 2020 by
+          </div>
+        </div>
+
+      </div>
+{% endblock body %}

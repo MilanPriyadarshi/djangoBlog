@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+About Us
+{% endblock title %}
+{% block aboutactive %}active{% endblock aboutactive %}
+{% block body %}
+{% load static %}
+ <div class="h-100 row align-items-center">
+        <img class="class=bd-placeholder-img rounded-circle mx-auto p-3" width="140" height="140" src="{% static 'home/logo.jpg' %}"></img>
+    </div>
+    <b>
+        <p style="text-align:center;">Milan Priyadarshi</p>
+    </b>
+    <i><small>
+            <p class="mr-0" style="text-align:center;">fueled by passion</p>
+        </small></i>
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+        <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h5 class="display-4 font-weight-normal">About This Blog</h5>
+            <p class="lead font-weight-normal">Today’s technology is a booming market full of exciting and innovative
+                products and new learning opportunities. With technology as a major consumer of our time and also an
+                exciting experience in our world today.So we need to update ourselves to compete with this fastest
+                growing market.</p>
+            <p class="lead font-weight-normal">Please visit again!! Have a nice day! :)</p>
+            <a class="btn btn-outline-secondary" href="#">Contribute</a>
+        </div>
+        <div class="product-device shadow-sm d-none d-md-block"></div>
+        <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+    </div>
+{% endblock body %}
