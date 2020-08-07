@@ -24,3 +24,7 @@ def contact(request):
 
 def about(request):
     return render(request,'home/about.html')
+def search(request):
+    query=get.GET['get']
+    print(query)
+    return render(request,'home/search.html')

@@ -11,10 +11,10 @@
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-    img {
-    max-width: 100%;
-    height: auto;
-    }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 
     <title>{% block title %} {% endblock title %}</title>
@@ -44,6 +44,10 @@
                 <li class="nav-item {% block contactactive %} {% endblock contactactive %}">
                     <a class="nav-link" href="/contact">Contact Me</a>
                 </li>
+                <form class="form-inline my-2 my-lg-0" action="/search" method="GET">
+                    <input class="form-control mr-sm-2" name=query id=query type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
             </ul>
         </div>
     </nav>
@@ -57,22 +61,22 @@
     {% endfor %}
     {% block body %} {% endblock body %}
 
-    
-        <footer>
-         <div class="text-center center-block bg-dark">
-                <p class="txt-railway h5">Follow me on </p>
-                <br>
-                <a class="mr-3" href="https:\\www.facebook.com\milan.priyadarshi3" target="_blank"><i
-                        class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
-                <a class="mr-3" href="https:\\www.instagram.com\_milan_priyadarshi_/" target="_blank"><i
-                        class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
-                <a class="mr-3" href="https:\\in.linkedin.com/in/milan-priyadarshi-8245241a0" target="_blank"><i
-                        class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
-                <a class="mr-3" href="https:\\www.gmail.com\milanpriyadarshi" target="_blank"><i
-                        class="fa fa-google-plus fa-2x" aria-hidden="true"></i></a>
 
-            </div>
-        </footer>
+    <footer>
+        <div class="text-center center-block bg-dark">
+            <p class="txt-railway h5">Follow me on </p>
+            <br>
+            <a class="mr-3" href="https:\\www.facebook.com\milan.priyadarshi3" target="_blank"><i
+                    class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+            <a class="mr-3" href="https:\\www.instagram.com\_milan_priyadarshi_/" target="_blank"><i
+                    class="fa fa-instagram fa-2x" aria-hidden="true"></i></a>
+            <a class="mr-3" href="https:\\in.linkedin.com/in/milan-priyadarshi-8245241a0" target="_blank"><i
+                    class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+            <a class="mr-3" href="https:\\www.gmail.com\milanpriyadarshi" target="_blank"><i
+                    class="fa fa-google-plus fa-2x" aria-hidden="true"></i></a>
+
+        </div>
+    </footer>
 
 
 
