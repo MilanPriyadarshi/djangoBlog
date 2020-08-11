@@ -5,21 +5,49 @@ BlogPost
 {% block blogactive %}active
 {% endblock blogactive %}
 {% block body %}
+{% load static %}
+{% load humanize %}
 <div class="container">
-<h3 class="my-2">{{post.title}}</h3>
-<div class="row my-4">
-  <div class="col-lg-12 col-sm-6 mb-4">
-    <div class="card shadow border-0 h-100"><img class="img-fluid card-img-top"
-        src="/media/{{post.image}}" alt="...">
-      <div class="card-body">by {{post.author}}
-        
-        <p class="text-gray-500 text-sm my-3"><i class="far fa-clock mr-2"></i>{{post.timeStamp}}</p>
-        <p class="my-2 text-muted text-sm">{{post.desc}}</p>
+  <h3 class="my-2">{{post.title}}</h3>
+  <div class="row my-4">
+    <div class="col-lg-12 col-sm-6  col-md-12 mb-4">
+      <div class="card shadow border-0 h-100"><img class="img-fluid card-img-top" src="/media/{{post.image}}" alt="...">
+        <div class="card-body">by {{post.author}}
+
+          <p class="text-gray-500 text-sm my-3"><i class="far fa-clock mr-2"></i>{{post.timeStamp}}</p>
+          <p class="my-2 text-muted text-sm">{{post.desc}}</p>
+        </div>
       </div>
     </div>
+    <div class="container my-2 mb-2">
+      <h3>Comments({{comments.count}})</h3>
+      <div class="my-2">
+      {% if user.is_authenticated %}
+      <form action="/blog/postComment" method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter your Comment:</label>
+          <textarea class="form-control" id="comment" name="comment" placeholder="Enter comments here"
+            style="margin-top: 0px; margin-bottom: 0px; height: 109px;"></textarea>
+        </div>
+        <input type="hidden" name="postSno" value="{{post.sno}}">
+        <button type="submit" class="btn btn-outline-primary">Submit</button>
+      </form>
+      {% else %}
+      <h3 class="text-danger text-monospace">Please login to post a comment</h3>
+      {% endif %}
+      
+      </div>
+      {% for comment in comments %}
+      <div class="row my-4">
+        <div class="col-md-1"><img src="{% static 'blog/user.png' %}" height=75px width=75px class="rounded mx-auto d-block border border-dark" ></div>
+        <div class="col-md-11"><h4><b>{{comment.user.username}}</b> </h4> <span class="badge badge-secondary my-1">{{comment.timeStamp | naturaltime}}</span> 
+        <div><h6 class="text-monospace">{{comment.comment}}</h6></div></div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
-</div>
-<a href="/blog" class="btn btn-primary mb-4">Continue to Blog</a>
 </div>
 
 {% endblock body %}

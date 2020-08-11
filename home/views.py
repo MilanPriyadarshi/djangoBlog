@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from blog.models import Post
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
     return render(request,'home/home.html')
@@ -47,13 +48,13 @@ def handleSignup(request):
         pass2=request.POST['pass2']
         if len(username)>15:
             messages.error(request,"Username must be under 15 characters")
-            return redirect("/")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
         if not username.isalnum():
             messages.error(request,"Username should only cotains letters and numbers")
-            return redirect("/")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
         if pass1 != pass2:
             messages.error(request,"Passwords do not match")
-            return redirect("/")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
 
 
 
@@ -62,11 +63,11 @@ def handleSignup(request):
         myuser.last_name=lname
         myuser.save()
         messages.success(request,"Your account successfully created")
-        return redirect("/")
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
 
     
     else:
-        return HttpResponse("404-not found")
+        return render(request,'home/error.html')
 def handleLogin(request):
      if request.method=='POST':
         loginusername=request.POST['loginusername']
@@ -75,15 +76,16 @@ def handleLogin(request):
         if user is not None:
             login(request,user)
             messages.success(request,"You logged in Successfully")
-            return redirect("/")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
         else:
             messages.warning(request,"Invalid Username and password")
-            return redirect("/")
+            # return redirect("/")
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 
     
-     return HttpResponse("404-not found")
+     return render(request,'home/error.html')
 
      
 def handleLogout(request):
     logout(request)
     messages.success(request,"You logged out Successfully")
-    return redirect("/")
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER')) 

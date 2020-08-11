@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}404-Not Found
+{% endblock title %}
+{% block body %}
+{% load static %}
+ <div class="container my-4">
+  <img src="{% static 'home/not.jpg' %}" class="img-fluid" alt="Responsive image">
+  <p>
+   <h3 class="text-monospace">Your request</b> - did not match any urls</h3><br>
+   <h5>Suggestions:</h5>
+   <ul>
+   <li>
+   <h6>Make sure that all the words spelled correctly</h6>
+   </li>
+   <li>
+   <h6>Try different keywords</h6>
+   </li>
+   <li>
+   <h6>Try more general keywords</h6>
+   </li>
+  
+   </ul>
+  </p>
+  <a href="/" class="btn btn-outline-success">Continue to Home</a>
+  </div>
+{% endblock body %}
