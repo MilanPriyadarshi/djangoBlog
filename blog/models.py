@@ -9,6 +9,7 @@ class Post(models.Model):
     desc=models.TextField()
     author=models.CharField(max_length=100)
     slug=models.CharField(max_length=130)
+    views=models.IntegerField(default=0)
     timeStamp=models.DateTimeField(blank=True)
     image=models.ImageField(upload_to="blog/images",default="")
 

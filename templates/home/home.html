@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% block title %}Welcome to TechWorld
+{% endblock title %}
 {% block homeactive %}active{% endblock homeactive %}
 {% block body %}
 
@@ -39,30 +41,29 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
-<div class="container-fluid mt-4 shadow-sm p-3 mb-5 bg-white rounded">
-    <h6 class="text-monospace text-center font-weight-bold">Welcome to Milan's Blog</h6>
-    <img class="mt-3" src="{% static 'home/home1.jpg' %}" class="img-fluid"
-        alt="Responsive image">
-    <h5 class='text-center'>Explore</h5>
-    <p class='text-center text-monospace'>The Ocean Of IT.</p>
+<div class="container my-2 text-center">
+ {% if user.is_authenticated %}
+       <h5> Welcome, {{request.user}}</h5>
+      {% else %}
+       <a href="signup" class="btn btn-outline-warning mx-2 " data-target="#signupModal" data-toggle="modal">Sign Up</a>
+       <a href="login" class="btn btn-outline-success " data-target="#loginModal" data-toggle="modal">Log In</a>
+      {% endif %}
 </div>
-<div class="container-fluid mt-4 shadow-sm p-3 mb-5 bg-white rounded">
-
-    <img class="mt-3" src="{% static 'home/home2.jpg' %}" class="img-fluid"
-        alt="Responsive image">
-    <h5 class="text-center ">Stay Foolish,Stay Hungry</h5>
-    <p class="text-center text-monospace">Always Hunt For Knowledge.</p>
-
-</div>
-<div class="container-fluid mt-4 shadow-sm p-3 mb-5 bg-white rounded">
-    <img class="mt-3" src="{% static 'home/home3.jpg' %}" class="img-fluid"
-        alt="Responsive image">
-    <h5 class="text-center">Best Blog</h5>
-    <p class="text-center text-monospace">To Update Yourself With Technologies.</p>
-
-</div>
-<div class="container mt-3 mb-3 text-center">
-  <a href="/blog" class="btn btn-outline-success">Continue to Blog</a>
-</div>
+<div class="container font-weight-bolder text-center my-4"><h5 class="text-danger"><marquee direction = "left" scrollamount=15>Our Lastest Trending Posts</marquee></h5></div>
+{% for posts in post %}
+ <div class="row my-4">
+  <div class="col-lg-12 col-sm-12 mb-4">
+    <div class="card shadow border-0 h-100"><img class="img-fluid card-img-top"
+        src="/media/{{posts.image}}" alt="...">
+      <div class="card-body">by {{posts.author}}  
+        <h5 class="my-2">{{posts.title}}</h5>
+        <small>  {{posts.views}} <i class="fa fa-eye fa-0x" aria-hidden="true"></i></small>
+        <p class="text-gray-500 text-sm my-3"><i class="far fa-clock mr-2"></i>{{posts.timeStamp}}</p>
+        <p class="my-2 text-muted text-sm">{{posts.desc | truncatechars:150}}</p><a class="btn btn-outline-primary pl-0" href="/blog/{{posts.slug}}">Read more</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  {% endfor %}
+  <div class="container my-3 mb-4 text-center"><a href="/blog" class="btn btn-outline-success ">Continue to read Posts</a></div>
 {% endblock body %}

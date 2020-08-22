@@ -16,6 +16,7 @@
         src="/media/{{i.image}}" alt="...">
       <div class="card-body">by {{i.author}}
         <h5 class="my-2">{{i.title}}</h5>
+        <h5><i class="fa fa-eye fa-0x" aria-hidden="true"></i> {{i.views}}</h5>
         <p class="text-gray-500 text-sm my-3"><i class="far fa-clock mr-2"></i>{{i.timeStamp}}</p>
         <p class="my-2 text-muted text-sm">{{i.desc | truncatechars:150}}</p><a class="btn btn-primary pl-0" href="/blog/{{i.slug}}"> Read more -></a>
       </div>

@@ -7,7 +7,10 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 # Create your views here.
 def home(request):
-    return render(request,'home/home.html')
+    post=Post.objects.order_by('-views')[:3]
+    # post=Post.objects.filter(Post.views >= 2)[:3]
+    context={'post':post }
+    return render(request,'home/home.html',context)
 def contact(request):
     # messages.error(request,"Welcome to contact")
     if request.method =='POST':
